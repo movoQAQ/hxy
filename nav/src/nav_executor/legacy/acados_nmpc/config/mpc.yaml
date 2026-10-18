@@ -1,0 +1,35 @@
+# Sole source for online NMPC tuning. solver.yaml contains offline generation settings.
+nav_executor:
+  ros__parameters:
+    control_timeout: 0.045
+    xy_goal_tolerance: 0.10
+    goal_check_yaw: false
+    goal_check_angular_velocity: false
+    goal_confirmations: 3
+    MPC:
+      allow_unknown: true
+      allow_detours: true
+      dt: 0.05
+      horizon: 30
+      max_obstacles: 128
+      max_speed: 2.0
+      max_acc: 2.0
+      max_accel: 2.0
+      max_brake: 2.0
+      max_tracking_acc: 2.0
+      max_lateral_acc: 1.0
+      control_delay: 0.05
+      solver_budget_ms: 25.0
+      constraint_tolerance: 0.0002
+      safety_margin: 0.05
+      max_deviation: 1.0
+      soft_distance: 0.25
+      q_cross: 12.0
+      q_along: 3.0
+      r_speed: 1.5
+      r_delta_velocity: 1.0
+      r_brake: 0.0
+      r_direction: 0.0
+      q_obstacle: 30.0
+      terminal_weight: 3.0
+      terminal_stop: 8.0

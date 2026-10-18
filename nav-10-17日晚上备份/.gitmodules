@@ -1,0 +1,3 @@
+[submodule "src/navigation/topology_global_planner"]
+	path = src/navigation/topology_global_planner
+	url = git@github.com:Woah-woah/topology_global_planner.git

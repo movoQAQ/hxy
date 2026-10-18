@@ -1,0 +1,28 @@
+# ROS build output and local runtime data
+build/
+install/
+log/
+devel/
+startup-test-logs/
+.simulation.lock
+rosbag*/
+*.db3
+*.mcap
+
+# Local environments and editor caches
+.cache/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.vscode/
+.idea/
+.trae/
+.ref/
+.agents/
+.codex/
+.aws/
+
+# Preserved local repository histories
+/.repository-history/

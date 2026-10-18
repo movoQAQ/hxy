@@ -1,0 +1,21 @@
+{
+  "source_pcd": "/home/lyu/\u4e0b\u8f7d/RMUC2027_V1.0.0.pcd",
+  "source_sha256": "3d738c081b66c2a9aca02b551125bd6d2d84efc8053164662c3ead8e725eaa17",
+  "source_mesh": "gazebo/src/rmu_gazebo_simulator/resource/models/rmuc_2027/meshes/rmuc_2027.stl",
+  "pcd_to_world_translation": [
+    0.5000032261324845,
+    -0.0015661715100097617,
+    -0.061274005778076165
+  ],
+  "frame": "map (Gazebo world)",
+  "floor_z": 0.2,
+  "obstacle_height_band": [
+    0.32,
+    1.4
+  ],
+  "points": 1069264,
+  "map_size": [
+    582,
+    343
+  ]
+}

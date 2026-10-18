@@ -1,0 +1,59 @@
+#pragma once
+
+#include <functional>
+#include <memory>
+#include <string>
+
+#include "nav_executor/task_manager.hpp"
+#include "nav_executor/motion_fsm.hpp"
+#include "map_server/costmap_client.hpp"
+#include "nav_msgs/msg/odometry.hpp"
+
+namespace nav_executor
+{
+enum class ExecutionState {IDLE, RUNNING, STOPPED, SUCCEEDED, FAILED};
+
+// Odometry twist is expressed at the child-frame origin, not in header.frame_id.
+geometry_msgs::msg::Twist transformRobotVelocity(
+  const geometry_msgs::msg::Twist & speed,
+  const geometry_msgs::msg::TransformStamped & base_from_child);
+// Wait briefly for TF at the measured odometry stamp; never substitute a
+// differently timed transform when rotating a measured velocity.
+geometry_msgs::msg::Twist transformOdometryVelocity(
+  tf2_ros::Buffer & buffer, const std::string & base_frame,
+  const nav_msgs::msg::Odometry & odometry, double wait_timeout);
+bool finiteTwist(const geometry_msgs::msg::Twist & speed);
+
+// Peer of PathPlanner. All public methods and control ticks run on the same
+// mutually exclusive ROS executor; costmap activation alone runs asynchronously.
+class PathExecutor
+{
+public:
+  using Recovery = std::function<void(PlanIdentity, bool, bool, const std::string &)>;
+  using Failure = std::function<void(PlanIdentity, const std::string &)>;
+  using Success = std::function<void(PlanIdentity)>;
+  using Confirmation = std::function<bool(PlanIdentity)>;
+  using Observation = std::function<void(PlanIdentity,
+      const geometry_msgs::msg::PoseStamped &, const geometry_msgs::msg::Twist &)>;
+  PathExecutor(
+    const rclcpp::Node::SharedPtr & node,
+    std::shared_ptr<map_server::CostmapClient> local_costmap,
+    std::function<bool()> global_map_ready, Failure failure, Success success,
+    Confirmation confirmation, Observation observation, Recovery recovery = {});
+  ~PathExecutor();
+  PathExecutor(const PathExecutor &) = delete;
+  PathExecutor & operator=(const PathExecutor &) = delete;
+  bool acceptPath(const nav_msgs::msg::Path & path, PlanIdentity identity);
+  void stop(const std::string & reason);
+  ExecutionState state() const;
+  MotionState motionState() const;
+  void requestSpin(bool requested);
+  void setHoldMode(bool active);
+  void requestEscape();
+  double distanceRemaining() const;
+
+private:
+  class Impl;
+  std::unique_ptr<Impl> impl_;
+};
+}  // namespace nav_executor

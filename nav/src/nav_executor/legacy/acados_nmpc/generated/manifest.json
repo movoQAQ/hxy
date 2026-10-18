@@ -1,0 +1,13 @@
+{
+  "model": "omni_mpc",
+  "nx": 4,
+  "nu": 2,
+  "horizon": 30,
+  "dt": 0.05,
+  "max_obstacles": 128,
+  "mpc_planner_commit": "3002da6a5e43b3577f584381bbcad569c82a381b",
+  "acados_commit": "8ff7c2a17e235d6cad6671538e923ccb7428dc3e",
+  "casadi": "3.7.2",
+  "config_sha256": "a169f53feec1564f04c1a44e0f84a3ad79c1d83c4534bd89ccbb81bc75378f88",
+  "generator_sha256": "a2ba6633e74a10f5ca67ba05c996f5dfcbe9d99ec44a49df595a4b42630427bb"
+}

@@ -1,0 +1,67 @@
+{
+  "actuators": {
+    "wheel_radius": 0.0758,
+    "wheel_acceleration": 50.0,
+    "steering_gain": 6.0,
+    "steering_velocity": 3.0,
+    "steering_acceleration": 10.0
+  },
+  "scenarios": [
+    {
+      "scenario": "straight",
+      "success": true,
+      "reason": "passed",
+      "final_error_m": 0.0429901,
+      "final_speed_mps": 0.000112519,
+      "maximum_cross_track_m": 5.3305e-07,
+      "maximum_overshoot_m": 0,
+      "maximum_compute_ms": 4.80461,
+      "maximum_turn_speed_mps": 0,
+      "recovery_time_s": -1,
+      "commands": 178,
+      "reversed": false
+    },
+    {
+      "scenario": "hairpin",
+      "success": true,
+      "reason": "passed",
+      "final_error_m": 0.0429718,
+      "final_speed_mps": 0.00012001,
+      "maximum_cross_track_m": 0.0163397,
+      "maximum_compute_ms": 6.35937,
+      "maximum_turn_speed_mps": 0.672306,
+      "recovery_time_s": -1,
+      "commands": 246,
+      "reversed": false
+    },
+    {
+      "scenario": "recovery",
+      "success": true,
+      "reason": "passed",
+      "final_error_m": 0.042707,
+      "final_speed_mps": 0.000120215,
+      "maximum_cross_track_m": 0.4,
+      "maximum_overshoot_m": 0,
+      "maximum_compute_ms": 8.25567,
+      "maximum_turn_speed_mps": 0,
+      "recovery_time_s": 1.354,
+      "commands": 187,
+      "reversed": false
+    },
+    {
+      "scenario": "overshoot",
+      "success": true,
+      "reason": "passed",
+      "final_error_m": 0.0204081,
+      "final_speed_mps": 0.000122109,
+      "maximum_cross_track_m": 0.40758,
+      "maximum_overshoot_m": 0.40758,
+      "maximum_compute_ms": 7.34277,
+      "maximum_turn_speed_mps": 0,
+      "recovery_time_s": -1,
+      "commands": 115,
+      "reversed": true
+    }
+  ],
+  "environment": "Isolated Gazebo flat ground; original swerve model and plugin; not the live arena."
+}

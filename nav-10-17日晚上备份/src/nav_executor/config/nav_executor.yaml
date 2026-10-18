@@ -1,0 +1,75 @@
+nav_executor:
+  ros__parameters:
+    use_sim_time: false
+    log_enbaled: true
+    tick_frequency: 20.0
+    goal_tolerance: 0.02
+    retry_delay: 1.0
+    planning_timeout: 5.0
+    controller_frequency: 20.0
+    odom_topic: /Odometry
+    cmd_vel_topic: /cmd_vel
+    odom_timeout: 0.5
+    tf_timeout: 0.5
+    control_timeout: 0.2
+    xy_goal_tolerance: 0.3
+    yaw_goal_tolerance: 3.14
+    stopped_velocity_tolerance: 0.05
+    route_monitor:
+      enabled: true
+      deviation_distance: 0.5
+      deviation_duration: 1.0
+      stall_duration: 3.0
+      minimum_command_speed: 0.1
+      minimum_progress: 0.1
+      maximum_sample_gap: 0.25
+      replan_cooldown: 2.0
+      path_blocked:
+        enabled: true
+        lookahead_distance: 5.0
+        safety_margin: 0.05
+        confirmations: 3
+        maximum_sample_gap: 1.0
+    MPC:
+      allow_unknown: false
+      dt: 0.05
+      horizon: 10
+      max_speed: 2.0
+      max_acc: 2.0
+      max_lateral_acc: 1.0
+      q_along: 3.0
+      q_cross: 12.0
+      r_speed: 1.5
+      control_delay: 0.05
+      max_working_set_recalculations: 200
+
+
+topology_planner:
+  ros__parameters:
+    use_sim_time: false
+    TopoPlanner:
+      topology_yaml: ""  # launch resolves the installed topology_global_planner config
+      use_topology: true
+      fallback_to_inner_planner: false
+      allow_nearest_region_fallback: false
+      enforce_region_constraint: true
+      region_boundary_tolerance: 0.03
+      region_constraint_tolerance: 0.15
+      transform_tolerance: 0.1
+      duplicate_pose_tolerance: 0.02
+      blocked_goal_reset_distance: 0.50
+      blocked_connector_cost: 999.0
+      grid:
+        tolerance: 0.2
+        cost_field_radius: 0.6
+        cost_weight: 1.0
+        smooth: true
+        smoothing_backend: "osqp_corridor"
+        smoothing_dt: 0.1
+        smoothing_max_speed: 3.0
+        smoothing_max_acc: 1.0
+        smoothing_time_limit: 10.0
+        smoothing_iterations: 6
+        smoothing_corridor_range: 2.5
+        allow_unknown: false
+        use_final_approach_orientation: true

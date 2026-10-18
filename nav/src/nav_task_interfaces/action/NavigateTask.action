@@ -1,0 +1,39 @@
+uint8 NAVIGATE=0
+uint8 HOLD=1
+geometry_msgs/PoseStamped target
+uint8 goal_mode
+uint8 priority
+string task_name
+---
+uint8 OK=0
+uint8 FAILED=1
+uint8 PREEMPTED=2
+uint8 CANCELLED=3
+bool success
+uint8 result_code
+string message
+---
+# Values are stable public enums shared with TaskManager and MotionFSM.
+uint8 TASK_IDLE=0
+uint8 TASK_WAITING_FOR_MAP=1
+uint8 TASK_PLANNING=2
+uint8 TASK_PATH_READY=3
+uint8 TASK_SUCCEEDED=4
+uint8 TASK_FAILED=5
+uint8 MOTION_IDLE=0
+uint8 MOTION_FOLLOW=1
+uint8 MOTION_HOLD=2
+uint8 MOTION_PREPARE_SPIN=3
+uint8 MOTION_SPIN=4
+uint8 MOTION_ESCAPE=5
+uint8 MOTION_HAZARD_RECOVERY=6
+uint8 RECOVERY_NONE=0
+uint8 RECOVERY_ESCAPE=1
+uint8 RECOVERY_HAZARD=2
+uint64 goal_id
+uint64 plan_generation
+uint8 task_state
+uint8 motion_state
+uint8 recovery_state
+float32 distance_remaining
+uint8 replan_reason
